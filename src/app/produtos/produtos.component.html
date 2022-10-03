@@ -1,0 +1,10 @@
+<h1>Produtos</h1>
+<div
+  *ngFor="let produto of produtos">
+  <p><b>Nome Produto:</b> {{produto.nomeProduto}}</p>
+  <p><b>Preço:</b> {{produto.preco}}</p>
+  <p><b>Peso:</b> {{produto.peso}}</p>
+  <p><b>Data da Inclusão:</b> {{produto.dataInclusao}}</p>
+  <p><b>Data Validade:</b> {{produto.dataValidade}}</p>
+  <p><b>Imagem Produto:</b> {{produto.imageUrl}}</p>
+</div>
