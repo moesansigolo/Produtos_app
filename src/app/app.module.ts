@@ -1,9 +1,8 @@
-import { ProdutoDetalheComponent } from './componentes/produtos/produto-detalhe/produto-detalhe.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from'@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
@@ -15,9 +14,9 @@ import { DateTimeFormatPipe } from './../../helpers/DateTimeFormat.pipe';
 
 import { AppComponent } from './app.component';
 import { ProdutosComponent } from './componentes/produtos/produtos.component';
+import { ProdutoDetalheComponent } from './componentes/produtos/produto-detalhe/produto-detalhe.component';
 import { FornecedoresComponent } from './componentes/fornecedores/fornecedores.component';
 import { NavComponent } from './shared/nav/nav.component';
-import { PerfilComponent } from './componentes/users/perfil/perfil.component';
 import { DashboardComponent } from './componentes/dashboard/dashboard.component';
 import { ContatosComponent } from './componentes/contatos/contatos.component';
 import { TituloComponent } from './shared/titulo/titulo.component';
@@ -36,7 +35,6 @@ import { RegistrarComponent } from './componentes/users/registrar/registrar.comp
     DateTimeFormatPipe,
     ContatosComponent,
     DashboardComponent,
-    PerfilComponent,
     TituloComponent,
     ProdutoListaComponent,
     UsersComponent,
@@ -46,6 +44,7 @@ import { RegistrarComponent } from './componentes/users/registrar/registrar.comp
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
     TooltipModule.forRoot(),

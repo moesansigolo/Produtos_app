@@ -16,6 +16,7 @@ export class ProdutoDetalheComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.validation()
   }
 
   public validation(): void{
@@ -28,6 +29,10 @@ export class ProdutoDetalheComponent implements OnInit {
       dataValidade: ['', Validators.required],
       imageUrl: ['', Validators.required],
     });
+  }
+
+  public resetForm(): void{
+    this.form.reset();
   }
 
 }

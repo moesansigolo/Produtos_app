@@ -2,7 +2,6 @@ import { RegistrarComponent } from './componentes/users/registrar/registrar.comp
 import { LoginComponent } from './componentes/users/login/login.component';
 import { UsersComponent } from './componentes/users/users.component';
 import { ProdutoListaComponent } from './componentes/produtos/produto-lista/produto-lista.component';
-import { PerfilComponent } from './componentes/users/perfil/perfil.component';
 import { ContatosComponent } from './componentes/contatos/contatos.component';
 import { DashboardComponent } from './componentes/dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
@@ -30,7 +29,6 @@ const routes: Routes = [
   },
   { path: 'dashboard', component: DashboardComponent},
   { path: 'fornecedores', component: FornecedoresComponent},
-  { path: 'user/perfil', component: PerfilComponent},
   { path: 'contatos', component: ContatosComponent},
   { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   { path: '**', redirectTo: 'dashboard', pathMatch: 'full'},
