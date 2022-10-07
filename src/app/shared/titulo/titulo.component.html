@@ -1,0 +1,12 @@
+<div class="d-flex  p-3 my-3 text-white bg-black rounded shadow-sm">
+  <div class="d-flex aling-items-center mr-auto">
+    <i class="fa fa-product"></i>
+      <div class="lh-100">
+        <h2 class="mb-0 text-white lh-100">{{ titulo }}</h2>
+      </div>
+  </div>
+  <div *ngIf="botaoListar">
+    <button class="btn btn-outline-light" (click)="listar()">Listar {{ titulo }}</button>
+  </div>
+
+</div>

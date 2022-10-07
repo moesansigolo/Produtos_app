@@ -1,0 +1,59 @@
+<div class="card rounded shadow-sm">
+<form [formGroup]="form">
+  <div class="p-3">
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label>NomeProduto</label>
+        <input type="text" class="form-control"
+         formControlName="nomeProduto" placeholder="Nome do Produto">
+        <div class="invalid-feedback">Nome do produto é obrigatótio</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label>QntUnitária</label>
+        <input type="text" class="form-control" formControlName="qntUnitaria" placeholder="Quantidade Unitária">
+        <div class="invalid-feedback">Quantidade do produto é obrigatótio</div>
+      </div>
+      <div class="form-group col-md-4">
+        <label>Preço (R$)</label>
+        <input type="text" class="form-control is-invalid" formControlName="preco" placeholder="Preço">
+        <div class="invalid-feedback">Preço do produto é obrigatótio</div>
+      </div>
+      <div class="form-group col-md-4">
+        <label>Peso (Kg)</label>
+        <input type="text" class="form-control is-invalid" formControlName="peso" placeholder="Peso">
+        <div class="invalid-feedback">Peso do produto é obrigatótio</div>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Data Inclusão </label>
+        <input type="datetime" class="form-control is-invalid" formControlName="dataInclusao" placeholder="Data Inclusão">
+        <div class="invalid-feedback">Data de Inclusão do produto é obrigatótio</div>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Data Validade</label>
+        <input type="text" class="form-control is-invalid" formControlName="dataValidade" placeholder="Data Validade">
+        <div class="invalid-feedback">Data de Validade do produto é obrigatótio</div>
+      </div>
+    </div>
+    <div class="form-row">
+
+      <div class="form-group col-md-6">
+        <label>Imagem</label>
+        <input type="text" class="form-control " formControlName="imagem" placeholder="Imagem">
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <div class="d-flex">
+      <button class="btn btn-outline-secondary mr-auto border">
+        Cancelar Alteração
+      </button>
+      <button class="btn btn-success">
+        <!-- <span class="spinner-border spinner-border-sm mr-1"></span> -->
+        Salvar Produto
+      </button>
+    </div>
+  </div>
+</form>
+</div>

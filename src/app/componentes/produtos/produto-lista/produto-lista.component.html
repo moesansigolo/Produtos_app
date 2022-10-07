@@ -1,0 +1,73 @@
+<div class="card rounded shadow-sm p-3">
+
+  <div class="d-flex">
+    <div class="flex-fill pr-3">
+      <div class="form-group mb-2">
+      <input type="text" class="form-control " placeholder="Buscar Produtos" [(ngModel)]="filtroLista" />
+    </div>
+    </div>
+    <div>
+      <a class="d-flex btn btn-outline-primary"  routerLink="/produtos/detalhe">
+        <i class="fa fa-plus-circle my-1"></i>
+        <b class="ml-1 d-none d-sm-block">Novo</b></a>
+    </div>
+  </div>
+
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>
+        <button type="button" class="btn btn-outline-light btn-sm"
+        (click)="alterarImagem()">
+        <i class="{{!exibirImagem ? 'fa fa-eye' : 'fa fa-eye-slash'}}"></i>
+        {{!exibirImagem ? 'Imagem' : 'Ocultar'}}
+        </button>
+        </th>
+        <th>#</th>
+        <th>Nome Produto</th>
+        <th>Qnt Unitária</th>
+        <th>Preço R$</th>
+        <th>Peso Kg</th>
+        <th>Data Inclusão</th>
+        <th>Data Validade</th>
+        <th>Editar Produto</th>
+        <th>Excluir Produto</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="produtos && produtos.length">
+      <tr *ngFor="let produto of produtosFiltrados">
+        <td>
+          <img *ngIf="exibirImagem"
+          src="/assets/{{produto.imageUrl}}" alt="{{produto.nomeProduto}}"
+          [style.width.px]="tamanhoImg"
+          [style.margin.px]="margemImg">
+        </td>
+        <td>{{ produto.id }}</td>
+        <td>{{ produto.nomeProduto }}</td>
+        <td>{{ produto.qntUnitaria }}</td>
+        <td>{{ produto.preco }}</td>
+        <td>{{ produto.peso }}</td>
+        <td>{{ produto.dataInclusao | DateTimeFormat }}</td>
+        <td>{{ produto.dataValidade | DateTimeFormat }}</td>
+        <td><button type="button" class="btn btn-primary btn-sm mr-2" tooltip="Editar"><i class="fa fa-edit"></i> Editar</button></td>
+        <td><button type="button" class="btn btn-danger btn-sm" tooltip="Excluir" (click)="openModal(template)"><i class="fa fa-trash"></i> Excluir</button></td>
+      </tr>
+    </tbody>
+    <tfoot *ngIf="!produtos.length">
+      <tr>
+        <td colspan="8" class="text-center">
+          <h3>Nenhum produto encontrado!</h3>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Tem certeza de excluir esse produto?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()" >Sim</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >Não</button>
+  </div>
+</ng-template>
+
