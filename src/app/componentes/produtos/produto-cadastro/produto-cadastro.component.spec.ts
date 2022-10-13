@@ -1,21 +1,22 @@
+import { ProdutoCadastroComponent } from './produto-cadastro.component';
 
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 
 
-describe('ProdutoDetalheComponent', () => {
-  let component: ProdutoDetalheComponent;
-  let fixture: ComponentFixture<ProdutoDetalheComponent>;
+describe('ProdutoCadastroComponent', () => {
+  let component: ProdutoCadastroComponent;
+  let fixture: ComponentFixture<ProdutoCadastroComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProdutoDetalheComponent ]
+      declarations: [ ProdutoCadastroComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProdutoDetalheComponent);
+    fixture = TestBed.createComponent(ProdutoCadastroComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

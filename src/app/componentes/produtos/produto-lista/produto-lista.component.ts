@@ -1,10 +1,11 @@
+import { Router } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
 import { ProdutoService } from './../../../Services/produto.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Produto } from './../../../models/Produto';
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { NgxSpinnerService } from 'ngx-spinner';
+//import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-produto-lista',
@@ -16,10 +17,12 @@ export class ProdutoListaComponent implements OnInit {
 
   public produtos: Produto[] = [];
   public produtosFiltrados: Produto[] = [];
+
   public tamanhoImg: number = 50;
   public margemImg: number = 2;
   public exibirImagem: boolean = true;
-  private _filtroLista: string = '';
+  private _filtroLista = '';
+  public produtoId = 0 ;
 
   public get filtroLista(): string {
     return this._filtroLista;
@@ -45,7 +48,8 @@ export class ProdutoListaComponent implements OnInit {
     private produtoService: ProdutoService,
     private modalService: BsModalService,
     private toastr: ToastrService,
-    private spinner: NgxSpinnerService
+    private router: Router,
+    //private spinner: NgxSpinnerService
     ) {}
 
   public ngOnInit(): void {
@@ -60,8 +64,8 @@ export class ProdutoListaComponent implements OnInit {
 
   public getProdutos(): void {
     this.produtoService.getProdutos().subscribe(
-      (response) => {
-        this.produtos = response;
+      (produtos:Produto[]) => {
+        this.produtos = produtos;
         this.produtosFiltrados = this.produtos;
       },
       (error) => {
@@ -71,17 +75,36 @@ export class ProdutoListaComponent implements OnInit {
     );
   }
 
-  openModal(template: TemplateRef<any>) {
+  openModal(event: any, template: TemplateRef<any>, produtoId: number): void {
+    event.stopPropagation();
+    this.produtoId = produtoId;
     this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
   }
 
   confirm(): void {
-    this.toastr.success('Produto deletado com sucesso!', 'Deletado!');
     this.modalRef.hide();
+
+    this.produtoService.deleteProduto(this.produtoId).subscribe(
+        (result: any) => {
+        if (result.message === 'Deletado'){
+          this.toastr.success('Produto deletado com sucesso!', 'Deletado!');
+          this.getProdutos();
+        }
+      },
+      (error: any) => {
+        console.error(error)
+        this.toastr.error(`Erro ao tentar deletar o produto ${this.produtoId}`, 'Erro');
+        //this.spinner.hide();
+      },
+      //() =>this.spinner.hide(),
+    );
   }
 
   decline(): void {
     this.modalRef.hide();
   }
 
+  detalheProduto(id: number): void {
+    this.router.navigate([`produtos/cadastro/${id}`])
+  }
 }

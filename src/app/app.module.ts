@@ -1,3 +1,4 @@
+import { ProdutoCadastroComponent } from './componentes/produtos/produto-cadastro/produto-cadastro.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from'@angular/common/http'
@@ -10,11 +11,14 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
 
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { ptBrLocale } from 'ngx-bootstrap/locale';
+
 import { DateTimeFormatPipe } from './../../helpers/DateTimeFormat.pipe';
 
 import { AppComponent } from './app.component';
 import { ProdutosComponent } from './componentes/produtos/produtos.component';
-import { ProdutoDetalheComponent } from './componentes/produtos/produto-detalhe/produto-detalhe.component';
 import { FornecedoresComponent } from './componentes/fornecedores/fornecedores.component';
 import { NavComponent } from './shared/nav/nav.component';
 import { DashboardComponent } from './componentes/dashboard/dashboard.component';
@@ -25,11 +29,13 @@ import { UsersComponent } from './componentes/users/users.component';
 import { LoginComponent } from './componentes/users/login/login.component';
 import { RegistrarComponent } from './componentes/users/registrar/registrar.component';
 
+
+defineLocale('pt-br', ptBrLocale);
 @NgModule({
   declarations: [
     AppComponent,
     ProdutosComponent,
-    ProdutoDetalheComponent,
+    ProdutoCadastroComponent,
     FornecedoresComponent,
     NavComponent,
     DateTimeFormatPipe,
@@ -50,6 +56,7 @@ import { RegistrarComponent } from './componentes/users/registrar/registrar.comp
     TooltipModule.forRoot(),
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     ModalModule.forRoot(),
     ToastrModule.forRoot({
       timeOut: 3000,

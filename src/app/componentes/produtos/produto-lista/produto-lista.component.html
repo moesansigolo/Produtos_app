@@ -7,9 +7,9 @@
     </div>
     </div>
     <div>
-      <a class="d-flex btn btn-outline-primary"  routerLink="/produtos/detalhe">
+      <a class="d-flex btn btn-outline-primary"  routerLink="/produtos/cadastro">
         <i class="fa fa-plus-circle my-1"></i>
-        <b class="ml-1 d-none d-sm-block">Novo</b></a>
+        <b class="ml-1 d-none d-sm-block">Cadastrar Produto</b></a>
     </div>
   </div>
 
@@ -49,8 +49,8 @@
         <td>{{ produto.peso }}</td>
         <td>{{ produto.dataInclusao | DateTimeFormat }}</td>
         <td>{{ produto.dataValidade | DateTimeFormat }}</td>
-        <td><button type="button" class="btn btn-primary btn-sm mr-2" tooltip="Editar"><i class="fa fa-edit"></i> Editar</button></td>
-        <td><button type="button" class="btn btn-danger btn-sm" tooltip="Excluir" (click)="openModal(template)"><i class="fa fa-trash"></i> Excluir</button></td>
+        <td><button type="button" class="btn btn-primary btn-sm mr-2" tooltip="Editar" (click)="detalheProduto(produto.id)"><i class="fa fa-edit"></i> Editar</button></td>
+        <td><button type="button" class="btn btn-danger btn-sm" tooltip="Excluir" (click)="openModal($event, template, produto.id)"><i class="fa fa-trash"></i> Excluir</button></td>
       </tr>
     </tbody>
     <tfoot *ngIf="!produtos.length">
@@ -65,7 +65,7 @@
 
 <ng-template #template>
   <div class="modal-body text-center">
-    <p>Tem certeza de excluir esse produto?</p>
+    <p>Tem certeza de excluir esse produto com ID: {{this.produtoId}}?</p>
     <button type="button" class="btn btn-default" (click)="confirm()" >Sim</button>
     <button type="button" class="btn btn-primary" (click)="decline()" >Não</button>
   </div>

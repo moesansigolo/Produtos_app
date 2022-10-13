@@ -1,3 +1,4 @@
+import { ProdutoCadastroComponent } from './componentes/produtos/produto-cadastro/produto-cadastro.component';
 import { RegistrarComponent } from './componentes/users/registrar/registrar.component';
 import { LoginComponent } from './componentes/users/login/login.component';
 import { UsersComponent } from './componentes/users/users.component';
@@ -8,7 +9,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FornecedoresComponent } from './componentes/fornecedores/fornecedores.component';
 import { ProdutosComponent } from './componentes/produtos/produtos.component';
-import { ProdutoDetalheComponent } from './componentes/produtos/produto-detalhe/produto-detalhe.component';
+
 
 const routes: Routes = [
   {
@@ -22,8 +23,8 @@ const routes: Routes = [
   {
     path: 'produtos', component: ProdutosComponent,
     children: [
-      { path: 'detalhe/:id', component: ProdutoDetalheComponent },
-      { path: 'detalhe', component: ProdutoDetalheComponent },
+      { path: 'cadastro/:id', component: ProdutoCadastroComponent },
+      { path: 'cadastro', component: ProdutoCadastroComponent  },
       { path: 'lista', component: ProdutoListaComponent }
     ]
   },
